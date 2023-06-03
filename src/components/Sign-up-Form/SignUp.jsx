@@ -22,7 +22,10 @@ export default function SignUp() {
       return;
     }
     try {
-      const { user } = await createAuthUserWithEmailAndPassword(email, password);
+      const { user } = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
       await createAuthUserWithEmailAndPassword(user, { displayName })
       resetFormFields();
     }

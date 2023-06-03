@@ -3,10 +3,10 @@ import './SigninStyles.scss'
 import {
 	signInAuthUserWithEmailAndPassword,
 	signInWithGooglePopup,
-	createUserDocumentFromAuth,
 } from "../../utils/firebase/Firebase.js";
 import MyButton from "../Button/MyButton";
 import FormInput from "../FormInput/FormInput";
+
 const defaultFormFields = {
 	email: "",
 	password: "",
@@ -15,6 +15,7 @@ const defaultFormFields = {
 export default function SignIn() {
 	const [formFields, setFormFields] = useState(defaultFormFields);
 	const { email, password } = formFields;
+
 const resetFormFields = () => {
 	setFormFields(defaultFormFields);
 };
@@ -25,18 +26,18 @@ const resetFormFields = () => {
  };
 
 	const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+     await signInWithGooglePopup();
   };
  const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		try {
-			const response = await signInAuthUserWithEmailAndPassword(
+			const {user} = await signInAuthUserWithEmailAndPassword(
 				email,
 				password
 			);
-			console.log(response);
+			
+	
 			resetFormFields();
 		} catch (error) {
 			switch (error.code) {
