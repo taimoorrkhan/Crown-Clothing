@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom"
 import React,{useContext} from "react";
 import "./NavigationStyles.scss";
+import "../../components/Cart/CartDropDownStyles.scss";
 import { ReactComponent as MainLogo } from "../../assests/crown.svg";
 import { UserContext } from "../../Contexts/UserContext";
 import { signOutAuthUser } from "../../utils/firebase/Firebase";
